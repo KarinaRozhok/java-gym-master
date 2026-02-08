@@ -69,6 +69,25 @@ public class TimetableTest {
     }
 
     @Test
+    void testGetTrainingSessionsForDayAndTimeMultipleSessions() {
+        Timetable timetable = new Timetable();
+
+        Group group1 = new Group("Акробатика для детей", Age.CHILD, 60);
+        Group group2 = new Group("Гимнастика для подростков", Age.TEEN, 75);
+        Coach coach = new Coach("Васильев", "Николай", "Сергеевич");
+
+        TrainingSession trainingSession1 = new TrainingSession(group1, coach, DayOfWeek.THURSDAY, new TimeOfDay(13, 0));
+        TrainingSession trainingSession2 = new TrainingSession(group2, coach, DayOfWeek.THURSDAY, new TimeOfDay(13, 0));
+
+        timetable.addNewTrainingSession(trainingSession1);
+        timetable.addNewTrainingSession(trainingSession2);
+
+        List<TrainingSession> sessionsAt13 = timetable.getTrainingSessionsForDayAndTime(DayOfWeek.THURSDAY, new TimeOfDay(13, 0));
+        Assertions.assertEquals(2, sessionsAt13.size());
+    }
+
+
+    @Test
     void testGetTrainingSessionsForDayAndTime() {
         Timetable timetable = new Timetable();
 
@@ -78,7 +97,6 @@ public class TimetableTest {
                 DayOfWeek.MONDAY, new TimeOfDay(13, 0));
 
         timetable.addNewTrainingSession(singleTrainingSession);
-
 
         // Проверка, что за понедельник в 13:00 вернулось одно занятие
         List<TrainingSession> sessionsAt13 = timetable.getTrainingSessionsForDayAndTime(DayOfWeek.MONDAY, new TimeOfDay(13, 0));
