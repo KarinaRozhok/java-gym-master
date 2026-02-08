@@ -1,6 +1,8 @@
 package ru.yandex.practicum.gym;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import java.util.*;
 
 public class TimetableTest {
@@ -53,8 +55,8 @@ public class TimetableTest {
 
         List<TrainingSession> thursdaySessions = timetable.getTrainingSessionsForDay(DayOfWeek.THURSDAY);
         Assertions.assertEquals(2, thursdaySessions.size());
-        Assertions.assertTrue(thursdaySessions.get(0).getTimeOfDay().equals(new TimeOfDay(13, 0)));
-        Assertions.assertTrue(thursdaySessions.get(1).getTimeOfDay().equals(new TimeOfDay(20, 0)));
+        Assertions.assertEquals(thursdaySessions.get(0).getTimeOfDay(), new TimeOfDay(13, 0));
+        Assertions.assertEquals(thursdaySessions.get(1).getTimeOfDay(), new TimeOfDay(20, 0));
 
         List<TrainingSession> tuesdaySessions = timetable.getTrainingSessionsForDay(DayOfWeek.TUESDAY);
         Assertions.assertTrue(tuesdaySessions.isEmpty());
