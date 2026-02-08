@@ -73,7 +73,7 @@ public class TimetableTest {
         Timetable timetable = new Timetable();
 
         Group group1 = new Group("Акробатика для детей", Age.CHILD, 60);
-        Group group2 = new Group("Гимнастика для подростков", Age.TEEN, 75);
+        Group group2 = new Group("Гимнастика для взрослых", Age.ADULT, 75);
         Coach coach = new Coach("Васильев", "Николай", "Сергеевич");
 
         TrainingSession trainingSession1 = new TrainingSession(group1, coach, DayOfWeek.THURSDAY, new TimeOfDay(13, 0));
